@@ -75,7 +75,8 @@ colnames(TBIid) <- "rel_family_id"
 
 #find CTRL siblings of TBI
 siblings_noTBI <- merge(TBIid, siblings, by= c("rel_family_id"), all.x =T) %>% 
-  arrange(rel_family_id) #10594 has two CTRL siblings
+  arrange(rel_family_id) %>%   #10594 has two CTRL siblings
+  filter(Group=="CTRL")
 
 write.csv(twinSiblingsTBI, file = "~/OneDrive - SickKids/ABCD_TBI/TBI_SiblingIDs/twinSiblingsTBI.csv")
 write.csv(twinSiblings_noTBI, file = "~/OneDrive - SickKids/ABCD_TBI/TBI_SiblingIDs/twinSiblings_noTBI.csv")
